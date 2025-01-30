@@ -13,11 +13,23 @@ export default function FormularioContador() {
 
   const [texto,setTexto]= useState("")
   const [contadorLetras, setContadorLetras] = useState(0);
+  const [color,setColor] = useState('yellow')
 
   useEffect(()=>{
     const contarPalabras = texto.length
-    setContadorLetras(contarPalabras)
+    setContadorLetras(contarPalabras);
 
+    (contarPalabras <10 ) ?  setColor('yellow') 
+         : (contarPalabras >10 && contarPalabras<50) ? setColor('green') 
+         : setColor('red')
+    
+    /*if(contadorLetras<10)
+        setColor('yellow')
+    else if(contarPalabras >10 && contarPalabras<50)
+        setColor('green') 
+    else 
+        setColor('red')*/
+        
   },[texto]);
 
 
@@ -35,6 +47,8 @@ export default function FormularioContador() {
         value={texto}
 
         onChange={manejarTexto}
+
+        style={{color}}
         
         >
 
