@@ -2,6 +2,7 @@ import React from 'react'
 import { useContador } from '../Providers/Provider'
 
 export default function ComponentSumaContext() {
+    
     const { contador, sumarContador, restarContador } = useContador()
 
     return (

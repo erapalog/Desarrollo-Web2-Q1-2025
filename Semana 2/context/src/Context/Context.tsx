@@ -5,4 +5,4 @@ export const ContextContador=createContext({
     contador:0,
     sumarContador: ()=>{},
     restarContador: ()=>{}
-})
+}) 

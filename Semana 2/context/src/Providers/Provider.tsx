@@ -17,6 +17,7 @@ export default function Provider(props:ViewReact) {
   const restarContador = () =>{
     setContador(contador-1)
   }
+  
   return (
     <div>
         <ContextContador.Provider value={{contador,sumarContador,restarContador}}>
