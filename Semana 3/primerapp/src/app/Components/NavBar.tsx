@@ -24,13 +24,15 @@ export default function NavBar() {
                         </li>
                         <li className="nav-item"><Link href="/productos" className="nav-link"> Productos</Link></li>
                         <li className="nav-item">
-
+                            <Link href='/carrito'>
                             <button type="button" className="btn btn-primary position-relative">
                                 Carrito
                                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                     {productoCarrito.length}
                                 </span>
                             </button>
+                            </Link>
+                          
                         </li>
                     </ul>
 

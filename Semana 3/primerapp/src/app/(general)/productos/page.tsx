@@ -13,7 +13,7 @@ export default function page() {
 
     let body: Producto[] =
       [
-          {
+        {
           IdProducto: producto.length + 1,
           nombreProducto: "Pastas",
           precioProducto: 30,
@@ -34,16 +34,26 @@ export default function page() {
   }, [])
 
   return (
-    <div className='row'>
-      {
+    <>
+      <div className='container'>
+        <div className='items-center justify-items-center'>
+          <img src="https://static.vecteezy.com/system/resources/previews/014/807/338/non_2x/shopping-cart-line-icon-vector.jpg" alt="" style={{ height: '70px' }} />
 
-        producto.map((item)=>(
-          <CardList {...item}></CardList>
-        ))
-      }
+        </div>
+        <div className='row'>
+          {
 
-   
-  
-    </div>
+            producto.map((item) => (
+              <CardList {...item}></CardList>
+            ))
+          }
+
+
+
+        </div>
+      </div>
+
+    </>
+
   )
 }
