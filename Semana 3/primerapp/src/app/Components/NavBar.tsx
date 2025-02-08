@@ -1,13 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
+import { useContextCarrito } from '../Provider/Provider'
 
 export default function NavBar() {
+
+    const {productoCarrito}= useContextCarrito()
     return (
 
         <main>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" href="/" >Navbar</ Link>
+                    <Link className="navbar-brand" href="/" >Ecommerce</ Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -20,7 +23,15 @@ export default function NavBar() {
 
                         </li>
                         <li className="nav-item"><Link href="/productos" className="nav-link"> Productos</Link></li>
-                        <li className="nav-item"><a href="#" className="nav-link">Page 3</a></li>
+                        <li className="nav-item">
+
+                            <button type="button" className="btn btn-primary position-relative">
+                                Carrito
+                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {productoCarrito.length}
+                                </span>
+                            </button>
+                        </li>
                     </ul>
 
                 </div>

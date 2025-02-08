@@ -10,10 +10,17 @@ interface Node{
 export default function Provider({children}: Node) {
 
   const [producto, setProducto] = useState<Producto[]> ([]);
+  const [productoCarrito, setProductoCarrito] = useState<Producto[]> ([]);
+
+
+  const agregarCarrito= (item:Producto) =>{
+    setProductoCarrito([...productoCarrito,item])
+  }
+
 
   return (
     
-    <ContextCarrito.Provider value={{producto}}>
+    <ContextCarrito.Provider value={{producto,setProducto,productoCarrito,setProductoCarrito,agregarCarrito}}>
             {children}
     </ContextCarrito.Provider>
   )
