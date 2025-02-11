@@ -22,7 +22,7 @@ export default function page() {
         },
         {
           IdProducto: producto.length + 2,
-          nombreProducto: "Zabahoras",
+          nombreProducto: "zanahoria",
           precioProducto: 50,
           isvProducto: 12,
           imagenProducto: "https://www.gob.mx/cms/uploads/image/file/318296/zanahoria1.jpg"
