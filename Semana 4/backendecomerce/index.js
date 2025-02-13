@@ -80,7 +80,7 @@ app.put('/producto/:id', async (req,res)=>{
             res.status(200).json({'mensjae':'Registro actualizado'})
         }
         else{
-            res.status(500).json({'mensjae':'Registro no encontrado'})
+            res.status(400).json({'mensjae':'Registro no encontrado'})
         }
         
     } catch (error) {

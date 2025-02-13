@@ -1,10 +1,8 @@
 import React from 'react'
 import { Producto } from '../Modelos/Producto'
-import { useContextCarrito } from '../Provider/Provider'
 
 export default function CardList(item: Producto) {
 
-  const {agregarCarrito} = useContextCarrito()
 
   return (
     <>
