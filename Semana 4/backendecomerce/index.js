@@ -1,10 +1,12 @@
 const express = require('express')
 const Producto = require('./Models/Producto')
-
+const cors= require('cors')
 
 const app = express()
 
 app.use(express.json())
+
+app.use(cors());
 
 //Tipo de respuesta **
 //json
