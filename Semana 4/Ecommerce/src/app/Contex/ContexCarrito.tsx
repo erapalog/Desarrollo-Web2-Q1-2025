@@ -9,6 +9,6 @@ export const ContextCarrito = createContext({
     agregarCarrito: (producto: Producto) =>{}   ,
     totalPagar :0 ,
     setTotalPagar: (total:number) =>{},
-    calcularTotalPagar:() =>{}
+    calcularTotalPagar:() =>{},
 
 })

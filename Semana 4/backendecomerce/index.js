@@ -1,6 +1,8 @@
 const express = require('express')
 const Producto = require('./Models/Producto')
+const Carrito = require('./Models/Carrito')
 const cors= require('cors')
+const { where } = require('sequelize')
 
 const app = express()
 
@@ -89,6 +91,58 @@ app.put('/producto/:id', async (req,res)=>{
 })
 
 
+
+
+app.post('/carrito', async (req,res)=>{
+    try {
+
+        console.log(req.body);
+
+        //insert into producto (id,nombre, precio,isv,img) values ('','','','','')
+        const carrito = await Carrito.create(req.body);
+
+        res.status(200).json(carrito)
+        
+    } catch (error) {
+        res.status(500).json({'Error':'Ocurrio un error en la peticion'})
+    }
+})
+
+app.delete('/carrito/:idproducto', async (req,res)=>{
+    try {
+
+        console.log(req.body);
+
+        //delete from carrito where idproducto=?
+        const deleted = await Carrito.destroy({
+            where: { IdProducto: req.params.idproducto }
+        });
+
+        res.status(200).json({'Mensaje':'Eliminado Correctamente'})
+        
+    } catch (error) {
+        res.status(500).json({'Error':'Ocurrio un error en la peticion'})
+    }
+})
+
+app.put('/carrito/actualizar-estado', async (req, res) => {
+    try {
+        // Actualizar todos los elementos cuyo estado sea 0
+        const resultado = await Carrito.update(
+            { Estado: 1 }, // Nuevo estado (puedes cambiarlo según tu lógica)
+            { where: { Estado: 0 } } // Condición: solo actualiza donde estado sea 0
+        );
+
+        if (resultado[0] === 0) {
+            return res.status(404).json({ mensaje: "No hay elementos con estado 0 para actualizar" });
+        }
+
+        res.status(200).json({ mensaje: "Carrito actualizado correctamente", filasActualizadas: resultado[0] });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Ocurrió un error en la petición" });
+    }
+});
 
 app.listen(5000,()=>{
     console.log('ejecutando en puerto 5000')

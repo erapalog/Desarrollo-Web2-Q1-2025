@@ -13,9 +13,42 @@ export default function Provider({children}: Node) {
   const [productoCarrito, setProductoCarrito] = useState<Producto[]> ([]);
   const [totalPagar,setTotalPagar]= useState(0)
 
-  const agregarCarrito= (item:Producto) =>{
+  /*const agregarCarrito= (item:Producto) =>{
     setProductoCarrito([...productoCarrito,item])
-  }
+  }*/
+
+    
+
+    const agregarCarrito= (item:Producto) =>{
+      setProductoCarrito([...productoCarrito,item])
+        try {
+    
+               const response= fetch('http://localhost:5000/carrito',{
+              method:'POST',
+              headers:{
+                 'Content-Type':'application/json'
+              },
+              body:JSON.stringify({
+                IdProducto:item.id,
+                PrecioTotal:item.precio + (item.precio*item.isv) /100,
+                Estado:0
+              })
+            })
+    
+          if(!response){
+            alert('Ocurrio un error')
+            return
+          }
+    
+          alert('Agregado exitosamente')
+    
+          
+        } catch (error) {
+          
+        }
+     
+    }
+
 
     function calcularTotalPagar() {
           let total = 0;
@@ -28,6 +61,8 @@ export default function Provider({children}: Node) {
   
       }
 
+    
+
   return (
     
     <ContextCarrito.Provider value={{producto,
@@ -36,7 +71,8 @@ export default function Provider({children}: Node) {
                             agregarCarrito,
                             totalPagar,
                             setTotalPagar,
-                            calcularTotalPagar}}>
+                            calcularTotalPagar
+                            }}>
             {children}
     </ContextCarrito.Provider>
   )

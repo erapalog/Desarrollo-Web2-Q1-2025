@@ -11,11 +11,34 @@ export default function page() {
   
 
     useEffect(() => {
+
+        //cargarCarrito()
         calcularTotalPagar()
     },[])
 
     function pagar(){
-        alert('El total a pagar es: '+ totalPagar)
+        //alert('El total a pagar es: '+ totalPagar)
+
+        try {
+    
+            const response= fetch('http://localhost:5000/carrito/actualizar-estado',{
+           method:'PUT',
+           headers:{
+              'Content-Type':'application/json'
+           }
+         })
+ 
+       if(!response){
+         alert('Ocurrio un error')
+         return
+       }
+ 
+       alert('compra confirmada exitosamente')
+ 
+       
+     } catch (error) {
+       
+     }
     }
     return (
         <div className='container'>
