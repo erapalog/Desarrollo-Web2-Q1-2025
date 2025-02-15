@@ -26,7 +26,7 @@ export default function Eliminar(item:Producto) {
                   return
                 }
           
-                alert('Agregado exitosamente')
+                alert('Elinado exitosamente')
           
                 
               } catch (error) {

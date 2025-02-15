@@ -98,7 +98,7 @@ app.post('/carrito', async (req,res)=>{
 
         console.log(req.body);
 
-        //insert into producto (id,nombre, precio,isv,img) values ('','','','','')
+        //insert into carrito (?,?,?) values ('','','','','')
         const carrito = await Carrito.create(req.body);
 
         res.status(200).json(carrito)
@@ -129,7 +129,7 @@ app.put('/carrito/actualizar-estado', async (req, res) => {
     try {
         // Actualizar todos los elementos cuyo estado sea 0
         const resultado = await Carrito.update(
-            { Estado: 1 }, // Nuevo estado (puedes cambiarlo según tu lógica)
+            { Estado: 1 }, // Nuevo estado (bolleat true false, 0 y 1)
             { where: { Estado: 0 } } // Condición: solo actualiza donde estado sea 0
         );
 

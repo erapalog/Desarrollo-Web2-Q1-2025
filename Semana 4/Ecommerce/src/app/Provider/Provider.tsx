@@ -23,7 +23,7 @@ export default function Provider({children}: Node) {
       setProductoCarrito([...productoCarrito,item])
         try {
     
-               const response= fetch('http://localhost:5000/carrito',{
+              const response= fetch('http://localhost:5000/carrito',{
               method:'POST',
               headers:{
                  'Content-Type':'application/json'
