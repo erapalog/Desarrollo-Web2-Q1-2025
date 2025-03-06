@@ -27,7 +27,7 @@ export default function ProviderEvento({children}: Vista) {
     
         let resp;
 
-        alert(evento.Id)
+        //alert(evento.Id)
        
       if(evento.Id==0){
 
@@ -48,9 +48,9 @@ export default function ProviderEvento({children}: Vista) {
             body: JSON.stringify(evento)
           })
 
-          listarEventos()
+          
       }
-    
+      listarEventos()
       if(resp){
         alert('Agregado Correctamente')
       }
