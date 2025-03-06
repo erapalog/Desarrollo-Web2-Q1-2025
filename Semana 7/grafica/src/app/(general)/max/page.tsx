@@ -11,6 +11,11 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,
 
 export default function page() {
 
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false, 
+  };
+
  const [charData, setCharData]= useState({
   labels:[],
   datasets:[{
@@ -41,9 +46,11 @@ export default function page() {
     })
  },[])
   return (
-    <div >
-          <Pie data={charData}></Pie>
+    <div style={{ height: "500px", width: "500px" }}>
+    <Pie data={charData} options={options} ></Pie>
     </div>
+     
+          
     
   )
 }
